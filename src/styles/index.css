@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+body {
+  margin: 0;
+  font-family: "Rubik", -apple-system, "Fira Sans", BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #303c4b;
+  font-weight: 300;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h2 {
+  text-align: left;
+  margin: 0;
+  font-size: 36px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  height: 50px;
+  padding: 0 30px;
+  background: #9a3c86;
+}
+
+.navbar__link {
+  margin: 0 15px;
+}
+
+.navbar__link a {
+  color: #fff;
+  text-decoration: none;
+}

@@ -1,0 +1,66 @@
+.indicators {
+  max-width: 854px;
+  margin: 0 auto;
+}
+
+.indicators__h2 {
+  color: #384657;
+  font-size: 36px;
+  margin-top: 80px;
+  margin-bottom: 36px;
+}
+
+.indicators__link {
+  color: #9b3c86;
+  border-bottom: 1px dashed #9b3c86;
+  display: inline-block;
+  margin-left: 10px;
+  padding-bottom: 2px;
+  text-decoration: none;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+}
+.table > thead > tr > td {
+  padding: 0 0 15px 0;
+}
+.table > tbody > tr > td {
+  padding: 15px 10px 13px 0;
+  vertical-align: middle;
+  border-top: 1px solid #e7ebef;
+}
+.table a {
+  text-decoration: none;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.breadcrumbs__link {
+  position: absolute;
+  top: -67px;
+  left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  right: calc(100% + 40px);
+}
+
+.breadcrumbs__link a {
+  color: #303c4b;
+  text-decoration: none;
+}
+
+.breadcrumbs__link a:hover {
+  cursor: pointer;
+  color: #9b3c86;
+}
+
+.breadcrumbs__link svg {
+  margin-left: 40px;
+}
