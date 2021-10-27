@@ -5,22 +5,20 @@ import { Bar, Chart } from "react-chartjs-2";
 // import SplitPurchases from "../../SplitPurchases/SplitPurchases";
 
 function BarChart({ chartData }) {
-  console.log(chartData);
-  const labels = [];
-  chartData.map((x) => {
-    return labels.push(x.stage);
-  });
+  // Get Parameters from chartData
+  const getParametrsArray = (params, param) => {
+    const array = [];
+    params.map((x) => {
+      array.push(x[param]);
+    });
+    return array;
+  };
 
-  const dataLinesBlue = [];
-  chartData.map((y) => {
-    return dataLinesBlue.push(y.value);
-  });
+  const labels = getParametrsArray(chartData, "stage");
+  const dataLinesBlue = getParametrsArray(chartData, "value");
+  const dataLinesPurple = getParametrsArray(chartData, "average");
 
-  const dataLinesPurple = [];
-  chartData.map((y) => {
-    return dataLinesPurple.push(y.average);
-  });
-
+  // Plugins for Cart
   /* columns */
   const chartAreaCols = {
     id: "chartAreaCols",
@@ -142,43 +140,11 @@ function BarChart({ chartData }) {
 
   Chart.register({ htmlLegendPlugin });
 
-  const data = (canvas) => {
-    return {
-      labels: labels,
-      options: { options },
-      plugins: [htmlLegendPlugin, chartAreaCols],
-      datasets: [
-        {
-          label: "my first dataset",
-          // backgroundColor: gradient,
-          backgroundColor: "#36B5EB",
-          borderColor: "#36B5EB",
-          data: dataLinesBlue,
-          borderWidth: 1,
-          type: "line",
-        },
-        {
-          label: "average in the system",
-          data: dataLinesPurple,
-          backgroundColor: "#9a3c86",
-          borderColor: "#9a3c86",
-          borderWidth: 1,
-          type: "line",
-        },
-      ],
-    };
-  };
-
   const options = {
     radius: 6,
+    pointHoverRadius: 6,
     responsive: true,
     plugins: {
-      // chartAreaBorder: {
-      //   borderColor: "red",
-      //   borderWidth: 2,
-      //   borderDash: [5, 5],
-      //   borderDashOffset: 2,
-      // },
       chartAreaCols: {
         id: "chartAreaCols",
       },
@@ -205,14 +171,6 @@ function BarChart({ chartData }) {
         },
       },
     },
-    // animations: {
-    //   radius: {
-    //     duration: 400,
-    //     easing: "linear",
-    //     loop: (context) => context.active,
-    //   },
-    //},
-    // animations: animation,
     scales: {
       y: {
         type: "linear",
@@ -226,30 +184,47 @@ function BarChart({ chartData }) {
         grid: {
           color: "#E7EBEF",
           borderColor: "#FFFFFF",
-          // display: false,
         },
       },
       x: {
-        //weight: 10,
         grid: {
           display: false,
           borderColor: "#E7EBEF",
         },
         ticks: {
-          // callback: function (val, index) {
-          //   // Hide the label of every 2nd dataset
-          //   return index !== 2 ? this.getLabelForValue(val) : "";
-          // },
           tickColor: "red",
           align: "center",
           padding: 0,
           color: "#959A9E",
-          // source: "auto",
-          // maxRotation: 0,
-          // autoSkip: true,
         },
       },
     },
+  };
+
+  const data = (canvas) => {
+    return {
+      labels: labels,
+      options: { options },
+      plugins: [htmlLegendPlugin, chartAreaCols],
+      datasets: [
+        {
+          label: "my first dataset",
+          backgroundColor: "#36B5EB",
+          borderColor: "#36B5EB",
+          data: dataLinesBlue,
+          borderWidth: 1,
+          type: "line",
+        },
+        {
+          label: "average in the system",
+          data: dataLinesPurple,
+          backgroundColor: "#9a3c86",
+          borderColor: "#9a3c86",
+          borderWidth: 1,
+          type: "line",
+        },
+      ],
+    };
   };
 
   const ref = useRef();
@@ -308,8 +283,6 @@ function BarChart({ chartData }) {
       <p> clickedElement = {clickedElement}</p>
       <p> clickedDataset = {clickedDataset}</p>
       <p> clickedElements = {clickedElements}</p>
-      {/* <Indicators />
-      <SplitPurchases /> */}
     </div>
   );
 }
