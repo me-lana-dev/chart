@@ -229,19 +229,11 @@ function BarChart({ chartData }) {
 
   const ref = useRef();
 
-  //const [clickedElements, setClickedElements] = useState("");
-
   const getElementsAtEvent = (elements) => {
     if (!elements.length) return;
-    //console.log("getElements", elements);
-    // console.log(typeof elements);
-    // setClickedElements(elements.length);
-
-    const index = elements[0].index;
-
-    // console.log("index", index);
-    // console.log(datasetIndex, index);
+    // console.log("getElements", elements);
     // console.log(ref);
+    const { index } = elements[0];
 
     const label = ref.current.config._config.data.labels[index];
     const blueLine = ref.current.config._config.data.datasets[0].data[index];
@@ -261,7 +253,6 @@ function BarChart({ chartData }) {
         options={options}
         getElementsAtEvent={getElementsAtEvent}
       />
-      {/* <p> clickedElements = {clickedElements}</p> */}
     </div>
   );
 }
