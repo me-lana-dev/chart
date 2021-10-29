@@ -7,9 +7,9 @@ const Indicators = () => {
     <div className={styles.indicators}>
       <h2 className={styles.indicators__h2}>
         <span>Risk indicators appearing during</span>
-        <a href="/" className={styles.indicators__link}>
+        <Link to="/chart" className={styles.indicators__link}>
           publication stage
-        </a>
+        </Link>
       </h2>
 
       <div className={styles.breadcrumbs}>

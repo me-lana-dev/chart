@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import styles from "./BarChart.module.css";
+import { Navigate } from "react-location";
 import { Bar, Chart } from "react-chartjs-2";
 // import Indicators from "../../Indicators/Indicators";
 // import SplitPurchases from "../../SplitPurchases/SplitPurchases";
@@ -238,6 +239,7 @@ function BarChart({ chartData }) {
     console.log(ref);
     console.log("dataset", dataset);
     setClickedDataset("d");
+    window.location = "/indicators";
 
     // const datasetIndex = dataset[0].datasetIndex;
     // setClickedDataset(data.datasets[datasetIndex].label);
@@ -259,12 +261,15 @@ function BarChart({ chartData }) {
     // console.log(data.datasets[datasetIndex].data[index]);
     console.log("getElement", datasetIndex, index);
     //const indexes = `${datasetIndex} - ${index}`;
-    const indexes = labels[index];
-    setClickedElement(indexes);
+    setClickedElement(labels[index]);
     // setClickedElement(
     //   `${data.labels[index]} - ${data.datasets[datasetIndex].data[index]}`
     // );
   };
+
+  // const goTo = () => {
+  //   Navigate("./indicators", { replace: true });
+  // };
 
   return (
     <div className={styles.chart}>
