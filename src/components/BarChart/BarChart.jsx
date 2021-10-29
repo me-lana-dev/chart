@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import styles from "./BarChart.module.css";
-import { Navigate } from "react-location";
 import { Bar, Chart } from "react-chartjs-2";
 // import Indicators from "../../Indicators/Indicators";
 // import SplitPurchases from "../../SplitPurchases/SplitPurchases";
@@ -230,46 +229,25 @@ function BarChart({ chartData }) {
 
   const ref = useRef();
 
-  const [clickedDataset, setClickedDataset] = useState("");
-  const [clickedElements, setClickedElements] = useState("");
-  const [clickedElement, setClickedElement] = useState("");
-
-  const getDatasetAtEvent = (dataset) => {
-    if (!dataset.length) return;
-    console.log(ref);
-    console.log("dataset", dataset);
-    setClickedDataset("d");
-    window.location = "/indicators";
-
-    // const datasetIndex = dataset[0].datasetIndex;
-    // setClickedDataset(data.datasets[datasetIndex].label);
-  };
+  //const [clickedElements, setClickedElements] = useState("");
 
   const getElementsAtEvent = (elements) => {
     if (!elements.length) return;
-    console.log("getElements", elements);
-    console.log(typeof elements);
-    setClickedElements(elements.length);
+    //console.log("getElements", elements);
+    // console.log(typeof elements);
+    // setClickedElements(elements.length);
 
-    const label = ref.current.config._config.data.labels.elements;
-    console.log(label);
+    const index = elements[0].index;
+
+    // console.log("index", index);
+    // console.log(datasetIndex, index);
+    // console.log(ref);
+
+    const label = ref.current.config._config.data.labels[index];
+    const blueLine = ref.current.config._config.data.datasets[0].data[index];
+    const purpleLine = ref.current.config._config.data.datasets[1].data[index];
+    console.log(label, blueLine, purpleLine);
   };
-
-  const getElementAtEvent = (element) => {
-    if (!element.length) return;
-    const { datasetIndex, index } = element[0];
-    // console.log(data.datasets[datasetIndex].data[index]);
-    console.log("getElement", datasetIndex, index);
-    //const indexes = `${datasetIndex} - ${index}`;
-    setClickedElement(labels[index]);
-    // setClickedElement(
-    //   `${data.labels[index]} - ${data.datasets[datasetIndex].data[index]}`
-    // );
-  };
-
-  // const goTo = () => {
-  //   Navigate("./indicators", { replace: true });
-  // };
 
   return (
     <div className={styles.chart}>
@@ -281,13 +259,9 @@ function BarChart({ chartData }) {
         ref={ref}
         data={data}
         options={options}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
         getElementsAtEvent={getElementsAtEvent}
       />
-      <p> clickedElement = {clickedElement}</p>
-      <p> clickedDataset = {clickedDataset}</p>
-      <p> clickedElements = {clickedElements}</p>
+      {/* <p> clickedElements = {clickedElements}</p> */}
     </div>
   );
 }
