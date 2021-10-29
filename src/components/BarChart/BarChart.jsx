@@ -10,7 +10,7 @@ function BarChart({ chartData }) {
   const getParametrsArray = (params, param) => {
     const array = [];
     params.map((x) => {
-      array.push(x[param]);
+      return array.push(x[param]);
     });
     return array;
   };
