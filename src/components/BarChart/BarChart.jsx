@@ -2,7 +2,7 @@ import React, { useContext, useRef } from "react";
 import { Context } from "../../context/Context";
 import styles from "./BarChart.module.css";
 import { Bar, Chart } from "react-chartjs-2";
-import { useState } from "react";
+// import { useState } from "react";
 // import Indicators from "../../Indicators/Indicators";
 // import SplitPurchases from "../../SplitPurchases/SplitPurchases";
 
