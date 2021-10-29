@@ -3,20 +3,42 @@ import { Context } from "../../context/Context";
 import styles from "./Indicators.module.css";
 
 const Indicators = () => {
-  const indicatorsData = useContext(Context);
-  console.log(indicatorsData);
+  const [indicatorsData, statusVisible, setStatusVisible] = useContext(Context);
+  console.log(indicatorsData, statusVisible);
+  const openPurchases = (e) => {
+    e.preventDefault();
+    setStatusVisible({
+      chart: false,
+      indicators: false,
+      purchases: true,
+    });
+  };
+  const openChart = (e) => {
+    e.preventDefault();
+    setStatusVisible({
+      chart: true,
+      indicators: false,
+      purchases: false,
+    });
+  };
   return (
     <div className={styles.indicators}>
       <h2 className={styles.indicators__h2}>
         <span>Risk indicators appearing during</span>
-        <a href="/chart" className={styles.indicators__link}>
+        <a
+          href="/chart"
+          onClick={openChart}
+          className={styles.indicators__link}
+        >
           publication stage
         </a>
       </h2>
 
       <div className={styles.breadcrumbs}>
         <div className={styles.breadcrumbs__link}>
-          <a href="/chart">Dynamics</a>
+          <a href="/chart" onClick={openChart}>
+            Dynamics
+          </a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="7"
@@ -58,7 +80,9 @@ const Indicators = () => {
               interest or bids
             </td>
             <td>
-              <a href="/">23</a>
+              <a href="/" onClick={openPurchases}>
+                23
+              </a>
             </td>
           </tr>
           <tr>

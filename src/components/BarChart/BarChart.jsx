@@ -2,11 +2,14 @@ import React, { useContext, useRef } from "react";
 import { Context } from "../../context/Context";
 import styles from "./BarChart.module.css";
 import { Bar, Chart } from "react-chartjs-2";
+import { useState } from "react";
 // import Indicators from "../../Indicators/Indicators";
 // import SplitPurchases from "../../SplitPurchases/SplitPurchases";
 
 function BarChart() {
-  const chartData = useContext(Context);
+  const [chartData, statusVisible, setStatusVisible] = useContext(Context);
+  console.log(chartData);
+  console.log(statusVisible);
 
   // Get Parameters from chartData
   const getParametrsArray = (params, param) => {
@@ -242,6 +245,12 @@ function BarChart() {
     const blueLine = ref.current.config._config.data.datasets[0].data[index];
     const purpleLine = ref.current.config._config.data.datasets[1].data[index];
     console.log(label, blueLine, purpleLine);
+    // statusVisible.chart = false;
+    setStatusVisible({
+      chart: false,
+      indicators: true,
+      purchases: false,
+    });
   };
 
   return (

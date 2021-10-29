@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Context } from "./context/Context";
 import BarChart from "./components/BarChart/BarChart";
 import Indicators from "./components/Indicators/Indicators";
@@ -6,6 +6,25 @@ import Purchases from "./components/Purchases/Purchases";
 import "./styles/App.css";
 
 const App = () => {
+  // let [statusVisible, setStatusVisible] = useState([
+  //   { chart: true },
+  //   { indicators: false },
+  //   { purchases: false },
+  // ]);
+  let [statusVisible, setStatusVisible] = useState({
+    chart: true,
+    indicators: false,
+    purchases: false,
+  });
+
+  console.log(statusVisible.chart);
+
+  // setStatusVisible = useState([
+  //   { chart: true },
+  //   { indicators: false },
+  //   { purchases: false },
+  // ]);
+
   const chartData = [
     { stage: "Announcement", value: 3, average: 2 },
     { stage: "Clarification", value: 3, average: 4 },
@@ -64,16 +83,18 @@ const App = () => {
 
   return (
     <div className="App">
-      <Context.Provider value={chartData}>
-        <BarChart />
+      <Context.Provider value={[chartData, statusVisible, setStatusVisible]}>
+        {statusVisible.chart && <BarChart />}
       </Context.Provider>
 
-      <Context.Provider value={indicatorsData}>
-        <Indicators />
+      <Context.Provider
+        value={[indicatorsData, statusVisible, setStatusVisible]}
+      >
+        {statusVisible.indicators && <Indicators />}
       </Context.Provider>
 
-      <Context.Provider value={purchaseData}>
-        <Purchases />
+      <Context.Provider value={[purchaseData, statusVisible, setStatusVisible]}>
+        {statusVisible.purchases && <Purchases />}
       </Context.Provider>
     </div>
   );

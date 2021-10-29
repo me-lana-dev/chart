@@ -3,19 +3,33 @@ import { Context } from "../../context/Context";
 import styles from "./Purchases.module.css";
 
 const SplitingPurchases = () => {
-  const purchaseData = useContext(Context);
-  console.log(purchaseData);
+  const [purchaseData, statusVisible, setStatusVisible] = useContext(Context);
+  console.log(purchaseData, statusVisible);
+  const openIndicators = (e) => {
+    e.preventDefault();
+    setStatusVisible({
+      chart: false,
+      indicators: true,
+      purchases: false,
+    });
+  };
   return (
     <div className={styles.splitPurchases}>
       <h2 className={styles.splitPurchases__h2}>
         <span>Splitting purchases to avoid procurement thresholds</span>
-        <a href="/" className={styles.splitPurchases__link}>
+        <a
+          href="/"
+          onClick={openIndicators}
+          className={styles.splitPurchases__link}
+        >
           RI-PS-04
         </a>
       </h2>
       <div className={styles.breadcrumbs}>
         <div className={styles.breadcrumbs__link}>
-          <a href="/indicators">Indicators</a>
+          <a href="/indicators" onClick={openIndicators}>
+            Indicators
+          </a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="7"
