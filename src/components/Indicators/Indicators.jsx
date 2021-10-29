@@ -1,20 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./TableIndicators.module.css";
+import React, { useContext } from "react";
+import { Context } from "../../context/Context";
+import styles from "./Indicators.module.css";
 
 const Indicators = () => {
+  const indicatorsData = useContext(Context);
+  console.log(indicatorsData);
   return (
     <div className={styles.indicators}>
       <h2 className={styles.indicators__h2}>
         <span>Risk indicators appearing during</span>
-        <Link to="/chart" className={styles.indicators__link}>
+        <a href="/chart" className={styles.indicators__link}>
           publication stage
-        </Link>
+        </a>
       </h2>
 
       <div className={styles.breadcrumbs}>
         <div className={styles.breadcrumbs__link}>
-          <Link to="/chart">Dynamics</Link>
+          <a href="/chart">Dynamics</a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="7"

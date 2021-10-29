@@ -1,10 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { Context } from "../../context/Context";
 import styles from "./BarChart.module.css";
 import { Bar, Chart } from "react-chartjs-2";
 // import Indicators from "../../Indicators/Indicators";
 // import SplitPurchases from "../../SplitPurchases/SplitPurchases";
 
-function BarChart({ chartData }) {
+function BarChart() {
+  const chartData = useContext(Context);
+
   // Get Parameters from chartData
   const getParametrsArray = (params, param) => {
     const array = [];

@@ -1,8 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./SplitPurchases.module.css";
+import React, { useContext } from "react";
+import { Context } from "../../context/Context";
+import styles from "./Purchases.module.css";
 
 const SplitingPurchases = () => {
+  const purchaseData = useContext(Context);
+  console.log(purchaseData);
   return (
     <div className={styles.splitPurchases}>
       <h2 className={styles.splitPurchases__h2}>
@@ -13,7 +15,7 @@ const SplitingPurchases = () => {
       </h2>
       <div className={styles.breadcrumbs}>
         <div className={styles.breadcrumbs__link}>
-          <Link to="/indicators">Indicators</Link>
+          <a href="/indicators">Indicators</a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="7"
