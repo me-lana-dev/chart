@@ -4,13 +4,9 @@ import BarChart from "./components/BarChart/BarChart";
 import Indicators from "./components/Indicators/Indicators";
 import Purchases from "./components/Purchases/Purchases";
 import "./styles/App.css";
+import { CSSTransition } from "react-transition-group";
 
 const App = () => {
-  // let [statusVisible, setStatusVisible] = useState([
-  //   { chart: true },
-  //   { indicators: false },
-  //   { purchases: false },
-  // ]);
   let [statusVisible, setStatusVisible] = useState({
     chart: true,
     indicators: false,
@@ -18,12 +14,6 @@ const App = () => {
   });
 
   console.log(statusVisible.chart);
-
-  // setStatusVisible = useState([
-  //   { chart: true },
-  //   { indicators: false },
-  //   { purchases: false },
-  // ]);
 
   const chartData = [
     { stage: "Announcement", value: 3, average: 2 },
@@ -79,23 +69,44 @@ const App = () => {
     },
   ];
 
-  //const Context = React.createContext(chartData);
-
   return (
     <div className="App">
-      <Context.Provider value={[chartData, statusVisible, setStatusVisible]}>
-        {statusVisible.chart && <BarChart />}
-      </Context.Provider>
-
-      <Context.Provider
-        value={[indicatorsData, statusVisible, setStatusVisible]}
+      <CSSTransition
+        in={statusVisible.chart}
+        timeout={1000}
+        classNames="app__block"
+        unmountOnExit
       >
-        {statusVisible.indicators && <Indicators />}
-      </Context.Provider>
+        <Context.Provider value={[chartData, statusVisible, setStatusVisible]}>
+          {statusVisible.chart && <BarChart />}
+        </Context.Provider>
+      </CSSTransition>
 
-      <Context.Provider value={[purchaseData, statusVisible, setStatusVisible]}>
-        {statusVisible.purchases && <Purchases />}
-      </Context.Provider>
+      <CSSTransition
+        in={statusVisible.indicators}
+        timeout={1000}
+        classNames="app__block"
+        unmountOnExit
+      >
+        <Context.Provider
+          value={[indicatorsData, statusVisible, setStatusVisible]}
+        >
+          {statusVisible.indicators && <Indicators />}
+        </Context.Provider>
+      </CSSTransition>
+
+      <CSSTransition
+        in={statusVisible.purchases}
+        timeout={1000}
+        classNames="app__block"
+        unmountOnExit
+      >
+        <Context.Provider
+          value={[purchaseData, statusVisible, setStatusVisible]}
+        >
+          {statusVisible.purchases && <Purchases />}
+        </Context.Provider>
+      </CSSTransition>
     </div>
   );
 };
