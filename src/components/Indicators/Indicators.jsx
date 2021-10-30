@@ -12,37 +12,37 @@ const Indicators = () => {
   // const { indicatorsData, setPurchaseData } = props;
   // const [setStatusVisible] = useContext(Context);
 
-  const openPurchases = (e) => {
-    e.preventDefault();
-    setPurchaseData([
-      {
-        ocid: "OCDS-B3WDP1-MD-1571837868539",
-        procurementMethodDetail: "Framework execution 2",
-        classification: "15000000-8",
-        estematedValue: 71555247,
-        status: "active",
-      },
-      {
-        ocid: "OCDS-B3WDP1-MD-1571837868540",
-        procurementMethodDetail: "Restricted tender 2",
-        classification: "15000000-9",
-        estematedValue: 1555247,
-        status: "active",
-      },
-      {
-        ocid: "OCDS-B3WDP1-MD-1571837868539",
-        procurementMethodDetail: "Request for quotation 2",
-        classification: "15000000-8",
-        estematedValue: 1555247,
-        status: "evaluation",
-      },
-    ]);
-    setStatusVisible({
-      chart: false,
-      indicators: false,
-      purchases: true,
-    });
-  };
+  // const openPurchases = (e) => {
+  //   e.preventDefault();
+  //   setPurchaseData([
+  //     {
+  //       ocid: "OCDS-B3WDP1-MD-1571837868539",
+  //       procurementMethodDetail: "Framework execution 2",
+  //       classification: "15000000-8",
+  //       estematedValue: 71555247,
+  //       status: "active",
+  //     },
+  //     {
+  //       ocid: "OCDS-B3WDP1-MD-1571837868540",
+  //       procurementMethodDetail: "Restricted tender 2",
+  //       classification: "15000000-9",
+  //       estematedValue: 1555247,
+  //       status: "active",
+  //     },
+  //     {
+  //       ocid: "OCDS-B3WDP1-MD-1571837868539",
+  //       procurementMethodDetail: "Request for quotation 2",
+  //       classification: "15000000-8",
+  //       estematedValue: 1555247,
+  //       status: "evaluation",
+  //     },
+  //   ]);
+  //   setStatusVisible({
+  //     chart: false,
+  //     indicators: false,
+  //     purchases: true,
+  //   });
+  // };
 
   const openChart = (e) => {
     e.preventDefault();

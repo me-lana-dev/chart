@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
 import styles from "./Purchases.module.css";
-//import PurchasesRow from "./PurchasesRow";
+import PurchasesRow from "./PurchasesRow";
 
 const Purchases = () => {
   const [purchaseData, setIndicatorsData, setStatusVisible] =
@@ -93,19 +93,7 @@ const Purchases = () => {
           </tr>
         </thead>
         <tbody>
-          {purchaseData.map((purchase, index) => {
-            return (
-              <tr key={index}>
-                <td>
-                  <a href="/">{purchase.ocid}</a>
-                </td>
-                <td>{purchase.procurementMethodDetail}</td>
-                <td>{purchase.classification}</td>
-                <td>{purchase.estematedValue}</td>
-                <td>{purchase.status}</td>
-              </tr>
-            );
-          })}
+          <PurchasesRow purchaseData={purchaseData} />
         </tbody>
       </table>
     </div>

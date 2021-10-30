@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { Context } from "../../context/Context";
+import React from "react";
 
-const PurchasesRow = () => {
-  const [purchaseData] = useContext(Context);
+const PurchasesRow = (props) => {
+  const purchaseData = props.purchaseData;
+
   return purchaseData.map((purchase) => {
     return (
       <tr key={purchase.code}>
