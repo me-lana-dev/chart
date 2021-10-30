@@ -4,8 +4,7 @@ import styles from "./Indicators.module.css";
 import IndicatorsRow from "./IndicatorsRow";
 
 const Indicators = () => {
-  const [indicatorsData, setPurchaseData, setStatusVisible] =
-    useContext(Context);
+  const [indicatorsData, setStatusVisible] = useContext(Context);
 
   // console.log(indicatorsData, statusVisible);
 
