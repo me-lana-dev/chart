@@ -1,19 +1,45 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
 import styles from "./Purchases.module.css";
-import PurchasesRow from "./PurchasesRow";
+//import PurchasesRow from "./PurchasesRow";
 
-const SplitingPurchases = () => {
-  const [purchaseData, statusVisible, setStatusVisible] = useContext(Context);
-  console.log(purchaseData, statusVisible);
+const Purchases = () => {
+  const [purchaseData, setIndicatorsData, setStatusVisible] =
+    useContext(Context);
+
+  // console.log(purchaseData, statusVisible);
+
+  // const { purchaseData } = props;
+
+  //const [setStatusVisible] = useContext(Context);
+
   const openIndicators = (e) => {
     e.preventDefault();
+    setIndicatorsData([
+      {
+        code: "RI-PS-006",
+        description:
+          "Short or inadequate notice to bidders to submit expressions of interest or bids",
+        cases: 2,
+      },
+      {
+        code: "RI-PS-003",
+        description: "Splitting purchases to avoid procurement thresholds",
+        cases: 1,
+      },
+      {
+        code: "RI-PS-005",
+        description:
+          "Direct awards in contravention to the provisions of the procurement plan",
+        cases: 7,
+      },
+    ]);
     setStatusVisible({
-      chart: false,
       indicators: true,
       purchases: false,
     });
   };
+
   return (
     <div className={styles.splitPurchases}>
       <h2 className={styles.splitPurchases__h2}>
@@ -67,11 +93,23 @@ const SplitingPurchases = () => {
           </tr>
         </thead>
         <tbody>
-          <PurchasesRow />
+          {purchaseData.map((purchase, index) => {
+            return (
+              <tr key={index}>
+                <td>
+                  <a href="/">{purchase.ocid}</a>
+                </td>
+                <td>{purchase.procurementMethodDetail}</td>
+                <td>{purchase.classification}</td>
+                <td>{purchase.estematedValue}</td>
+                <td>{purchase.status}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
   );
 };
 
-export default SplitingPurchases;
+export default Purchases;

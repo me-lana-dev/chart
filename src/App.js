@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Context } from "./context/Context";
 import BarChart from "./components/BarChart/BarChart";
 import Indicators from "./components/Indicators/Indicators";
@@ -7,15 +7,18 @@ import "./styles/App.css";
 import { CSSTransition } from "react-transition-group";
 
 const App = () => {
+  const nodeRef = useRef(null);
   let [statusVisible, setStatusVisible] = useState({
     chart: true,
     indicators: false,
     purchases: false,
   });
 
-  console.log(statusVisible.chart);
+  console.log(statusVisible);
 
-  const chartData = [
+  //console.log(statusVisible.chart);
+
+  let chartData = [
     { stage: "Announcement", value: 3, average: 2 },
     { stage: "Clarification", value: 3, average: 4 },
     { stage: "Qualification", value: 3, average: 5 },
@@ -25,7 +28,7 @@ const App = () => {
     { stage: "Contracting", value: 3, average: 6 },
   ];
 
-  const indicatorsData = [
+  let [indicatorsData, setIndicatorsData] = useState([
     {
       code: "RI-PS-001",
       description:
@@ -43,9 +46,9 @@ const App = () => {
         "Direct awards in contravention to the provisions of the procurement plan",
       cases: 7,
     },
-  ];
+  ]);
 
-  const purchaseData = [
+  let [purchaseData, setPurchaseData] = useState([
     {
       ocid: "OCDS-B3WDP1-MD-1571837868539",
       procurementMethodDetail: "Framework execution",
@@ -67,7 +70,7 @@ const App = () => {
       estematedValue: 1555247,
       status: "evaluation",
     },
-  ];
+  ]);
 
   return (
     <div className="App">
@@ -75,9 +78,12 @@ const App = () => {
         in={statusVisible.chart}
         timeout={1000}
         classNames="app__block"
+        nodeRef={nodeRef}
         unmountOnExit
       >
-        <Context.Provider value={[chartData, statusVisible, setStatusVisible]}>
+        <Context.Provider
+          value={[chartData, setIndicatorsData, setStatusVisible]}
+        >
           {statusVisible.chart && <BarChart />}
         </Context.Provider>
       </CSSTransition>
@@ -86,10 +92,11 @@ const App = () => {
         in={statusVisible.indicators}
         timeout={1000}
         classNames="app__block"
+        nodeRef={nodeRef}
         unmountOnExit
       >
         <Context.Provider
-          value={[indicatorsData, statusVisible, setStatusVisible]}
+          value={[indicatorsData, setPurchaseData, setStatusVisible]}
         >
           {statusVisible.indicators && <Indicators />}
         </Context.Provider>
@@ -99,10 +106,11 @@ const App = () => {
         in={statusVisible.purchases}
         timeout={1000}
         classNames="app__block"
+        nodeRef={nodeRef}
         unmountOnExit
       >
         <Context.Provider
-          value={[purchaseData, statusVisible, setStatusVisible]}
+          value={[purchaseData, setIndicatorsData, setStatusVisible]}
         >
           {statusVisible.purchases && <Purchases />}
         </Context.Provider>

@@ -7,9 +7,15 @@ import { Bar, Chart } from "react-chartjs-2";
 // import SplitPurchases from "../../SplitPurchases/SplitPurchases";
 
 function BarChart() {
-  const [chartData, statusVisible, setStatusVisible] = useContext(Context);
-  console.log(chartData);
-  console.log(statusVisible);
+  // console.log(props);
+  const [chartData, setIndicatorsData, setStatusVisible] = useContext(Context);
+  // console.log(chartData);
+  // console.log(statusVisible);
+
+  //const { chartData, setIndicatorsData } = props;
+  //const [setIndicatorsData] = useContext(Context);
+  //const [statusVisible, setStatusVisible] = useContext(Context);
+  //console.log(statusVisible);
 
   // Get Parameters from chartData
   const getParametrsArray = (params, param) => {
@@ -245,7 +251,29 @@ function BarChart() {
     const blueLine = ref.current.config._config.data.datasets[0].data[index];
     const purpleLine = ref.current.config._config.data.datasets[1].data[index];
     console.log(label, blueLine, purpleLine);
-    // statusVisible.chart = false;
+
+    //statusVisible.chart = false;
+
+    setIndicatorsData([
+      {
+        code: "RI-PS-002",
+        description:
+          "Short or inadequate notice to bidders to submit expressions of interest or bids",
+        cases: 2,
+      },
+      {
+        code: "RI-PS-003",
+        description: "Splitting purchases to avoid procurement thresholds",
+        cases: 1,
+      },
+      {
+        code: "RI-PS-005",
+        description:
+          "Direct awards in contravention to the provisions of the procurement plan",
+        cases: 7,
+      },
+    ]);
+
     setStatusVisible({
       chart: false,
       indicators: true,

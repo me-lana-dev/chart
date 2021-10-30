@@ -1,19 +1,49 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
-import IndicatorsRow from "./IndicatorsRow";
+//import IndicatorsRow from "./IndicatorsRow";
 import styles from "./Indicators.module.css";
 
 const Indicators = () => {
-  const [indicatorsData, statusVisible, setStatusVisible] = useContext(Context);
-  //console.log(indicatorsData, statusVisible);
+  const [indicatorsData, setPurchaseData, setStatusVisible] =
+    useContext(Context);
+
+  // console.log(indicatorsData, statusVisible);
+
+  // const { indicatorsData, setPurchaseData } = props;
+  // const [setStatusVisible] = useContext(Context);
+
   const openPurchases = (e) => {
     e.preventDefault();
+    setPurchaseData([
+      {
+        ocid: "OCDS-B3WDP1-MD-1571837868539",
+        procurementMethodDetail: "Framework execution 2",
+        classification: "15000000-8",
+        estematedValue: 71555247,
+        status: "active",
+      },
+      {
+        ocid: "OCDS-B3WDP1-MD-1571837868540",
+        procurementMethodDetail: "Restricted tender 2",
+        classification: "15000000-9",
+        estematedValue: 1555247,
+        status: "active",
+      },
+      {
+        ocid: "OCDS-B3WDP1-MD-1571837868539",
+        procurementMethodDetail: "Request for quotation 2",
+        classification: "15000000-8",
+        estematedValue: 1555247,
+        status: "evaluation",
+      },
+    ]);
     setStatusVisible({
       chart: false,
       indicators: false,
       purchases: true,
     });
   };
+
   const openChart = (e) => {
     e.preventDefault();
     setStatusVisible({
@@ -74,11 +104,20 @@ const Indicators = () => {
           </tr>
         </thead>
         <tbody>
-          <IndicatorsRow
-            openPurchases={openPurchases}
-            statusVisible={statusVisible}
-            indicatorsData={indicatorsData}
-          />
+          {indicatorsData.map((indicator) => {
+            //console.log(indicator);
+            return (
+              <tr key={indicator.code}>
+                <td>{indicator.code}</td>
+                <td>{indicator.description}</td>
+                <td>
+                  <a href="/" onClick={openPurchases}>
+                    {indicator.cases}
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

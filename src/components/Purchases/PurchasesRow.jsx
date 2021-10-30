@@ -5,7 +5,7 @@ const PurchasesRow = () => {
   const [purchaseData] = useContext(Context);
   return purchaseData.map((purchase) => {
     return (
-      <tr>
+      <tr key={purchase.code}>
         <td>
           <a href="/">{purchase.ocid}</a>
         </td>
