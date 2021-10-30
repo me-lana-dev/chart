@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
+import IndicatorsRow from "./IndicatorsRow";
 import styles from "./Indicators.module.css";
 
 const Indicators = () => {
   const [indicatorsData, statusVisible, setStatusVisible] = useContext(Context);
-  console.log(indicatorsData, statusVisible);
+  //console.log(indicatorsData, statusVisible);
   const openPurchases = (e) => {
     e.preventDefault();
     setStatusVisible({
@@ -73,35 +74,11 @@ const Indicators = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>RI-PS-001</td>
-            <td>
-              Short or inadequate notice to bidders to submit expressions of
-              interest or bids
-            </td>
-            <td>
-              <a href="/" onClick={openPurchases}>
-                23
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>RI-PS-004</td>
-            <td>Splitting purchases to avoid procurement thresholds</td>
-            <td>
-              <a href="/">20</a>
-            </td>
-          </tr>
-          <tr>
-            <td>RI-PS-006</td>
-            <td>
-              Direct awards in contravention to the provisions of the
-              procurement plan
-            </td>
-            <td>
-              <a href="/">20</a>
-            </td>
-          </tr>
+          <IndicatorsRow
+            openPurchases={openPurchases}
+            statusVisible={statusVisible}
+            indicatorsData={indicatorsData}
+          />
         </tbody>
       </table>
     </div>
