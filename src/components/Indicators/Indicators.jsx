@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
-//import IndicatorsRow from "./IndicatorsRow";
 import styles from "./Indicators.module.css";
+import IndicatorsRow from "./IndicatorsRow";
 
 const Indicators = () => {
   const [indicatorsData, setPurchaseData, setStatusVisible] =
@@ -104,20 +104,10 @@ const Indicators = () => {
           </tr>
         </thead>
         <tbody>
-          {indicatorsData.map((indicator) => {
-            //console.log(indicator);
-            return (
-              <tr key={indicator.code}>
-                <td>{indicator.code}</td>
-                <td>{indicator.description}</td>
-                <td>
-                  <a href="/" onClick={openPurchases}>
-                    {indicator.cases}
-                  </a>
-                </td>
-              </tr>
-            );
-          })}
+          <IndicatorsRow
+            indicatorsData={indicatorsData}
+            setStatusVisible={setStatusVisible}
+          />
         </tbody>
       </table>
     </div>

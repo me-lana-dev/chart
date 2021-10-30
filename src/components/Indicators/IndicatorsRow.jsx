@@ -1,8 +1,6 @@
 import React from "react";
 
 const IndicatorsRow = (props) => {
-  //const [indicatorsData] = useContext(Context);
-
   const indicatorsData = props.indicatorsData;
 
   return indicatorsData.map((indicator) => {
@@ -12,7 +10,17 @@ const IndicatorsRow = (props) => {
         <td>{indicator.code}</td>
         <td>{indicator.description}</td>
         <td>
-          <a href="/" onClick={props.openPurchases}>
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              props.setStatusVisible({
+                chart: false,
+                indicators: false,
+                purchases: true,
+              });
+            }}
+          >
             {indicator.cases}
           </a>
         </td>
