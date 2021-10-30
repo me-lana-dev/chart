@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
 import styles from "./Purchases.module.css";
+import PurchasesRow from "./PurchasesRow";
 
 const SplitingPurchases = () => {
   const [purchaseData, statusVisible, setStatusVisible] = useContext(Context);
@@ -66,51 +67,7 @@ const SplitingPurchases = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <a href="/">OCDS-B3WDP1-MD-1571837868539</a>
-            </td>
-            <td>Framework execution</td>
-            <td>15000000-8</td>
-            <td>71 555 247.00</td>
-            <td>active</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/">OCDS-B3WDP1-MD-1571837868539</a>
-            </td>
-            <td>Restricted tender</td>
-            <td>14000000-1</td>
-            <td>71 555 247.00</td>
-            <td>active</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/">OCDS-B3WDP1-MD-1571837868539</a>
-            </td>
-            <td>Request for quotation</td>
-            <td>15000000-8</td>
-            <td>71 555 247.00</td>
-            <td>evaluation</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/">OCDS-B3WDP1-MD-1571837868539</a>
-            </td>
-            <td>EU open tender</td>
-            <td>14000000-1</td>
-            <td>71 555 247.00</td>
-            <td>cancelled</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/">OCDS-B3WDP1-MD-1571837868539</a>
-            </td>
-            <td>Contract reporting</td>
-            <td>15000000-8</td>
-            <td>71 555 247.00</td>
-            <td>unsuccessful</td>
-          </tr>
+          <PurchasesRow />
         </tbody>
       </table>
     </div>
