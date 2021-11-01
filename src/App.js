@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Context } from "./context/Context";
 import BarChart from "./components/BarChart/BarChart";
 import Indicators from "./components/Indicators/Indicators";
@@ -7,7 +7,7 @@ import "./styles/App.css";
 import { CSSTransition } from "react-transition-group";
 
 const App = () => {
-  const nodeRef = useRef(null);
+  // const nodeRef = useRef(null);
   const [statusVisible, setStatusVisible] = useState({
     chart: true,
     indicators: false,
@@ -80,7 +80,7 @@ const App = () => {
         in={statusVisible.chart}
         timeout={1000}
         classNames="app__block"
-        nodeRef={nodeRef}
+        // nodeRef={nodeRef}
         unmountOnExit
       >
         <Context.Provider
@@ -99,7 +99,7 @@ const App = () => {
         in={statusVisible.indicators}
         timeout={1000}
         classNames="app__block"
-        nodeRef={nodeRef}
+        // nodeRef={nodeRef}
         unmountOnExit
       >
         <Context.Provider
@@ -113,7 +113,7 @@ const App = () => {
         in={statusVisible.purchases}
         timeout={1000}
         classNames="app__block"
-        nodeRef={nodeRef}
+        // nodeRef={nodeRef}
         unmountOnExit
       >
         <Context.Provider

@@ -4,18 +4,18 @@
 }
 .app__block-enter {
   opacity: 0;
-  transform: scale(0.9);
+  /* transform: scale(0.9); */
 }
 .app__block-enter-active {
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300ms, transform 300ms;
+  /* transform: translateX(0); */
+  transition: opacity 300ms;
 }
 .app__block-exit {
   opacity: 1;
 }
 .app__block-exit-active {
   opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 300ms, transform 300ms;
+  /* transform: scale(0.9); */
+  transition: opacity 300ms;
 }
