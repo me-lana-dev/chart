@@ -4,37 +4,34 @@ import styles from "./Purchases.module.css";
 import PurchasesRow from "./PurchasesRow";
 
 const Purchases = () => {
-  const [purchaseData, setIndicatorsData, setStatusVisible] =
-    useContext(Context);
+  const [purchaseData, statusVisible, setStatusVisible] = useContext(Context);
 
-  // console.log(purchaseData, statusVisible);
-
-  // const { purchaseData } = props;
-
-  //const [setStatusVisible] = useContext(Context);
+  //const [purchaseData, statusVisible, setStatusVisible] = useContext(Context);
+  //console.log(purchaseData, statusVisible, statusVisible);
 
   const openIndicators = (e) => {
     e.preventDefault();
-    setIndicatorsData([
-      {
-        code: "RI-PS-006",
-        description:
-          "Short or inadequate notice to bidders to submit expressions of interest or bids",
-        cases: 2,
-      },
-      {
-        code: "RI-PS-003",
-        description: "Splitting purchases to avoid procurement thresholds",
-        cases: 1,
-      },
-      {
-        code: "RI-PS-005",
-        description:
-          "Direct awards in contravention to the provisions of the procurement plan",
-        cases: 7,
-      },
-    ]);
+    // setIndicatorsData([
+    //   {
+    //     code: "RI-PS-006",
+    //     description:
+    //       "Short or inadequate notice to bidders to submit expressions of interest or bids",
+    //     cases: 2,
+    //   },
+    //   {
+    //     code: "RI-PS-003",
+    //     description: "Splitting purchases to avoid procurement thresholds",
+    //     cases: 1,
+    //   },
+    //   {
+    //     code: "RI-PS-005",
+    //     description:
+    //       "Direct awards in contravention to the provisions of the procurement plan",
+    //     cases: 7,
+    //   },
+    // ]);
     setStatusVisible({
+      ...statusVisible,
       indicators: true,
       purchases: false,
     });

@@ -4,51 +4,20 @@ import styles from "./Indicators.module.css";
 import IndicatorsRow from "./IndicatorsRow";
 
 const Indicators = () => {
-  const [indicatorsData, setStatusVisible] = useContext(Context);
+  const [indicatorsData, statusVisible, setStatusVisible] = useContext(Context);
 
-  // console.log(indicatorsData, statusVisible);
-
-  // const { indicatorsData, setPurchaseData } = props;
-  // const [setStatusVisible] = useContext(Context);
-
-  // const openPurchases = (e) => {
-  //   e.preventDefault();
-  //   setPurchaseData([
-  //     {
-  //       ocid: "OCDS-B3WDP1-MD-1571837868539",
-  //       procurementMethodDetail: "Framework execution 2",
-  //       classification: "15000000-8",
-  //       estematedValue: 71555247,
-  //       status: "active",
-  //     },
-  //     {
-  //       ocid: "OCDS-B3WDP1-MD-1571837868540",
-  //       procurementMethodDetail: "Restricted tender 2",
-  //       classification: "15000000-9",
-  //       estematedValue: 1555247,
-  //       status: "active",
-  //     },
-  //     {
-  //       ocid: "OCDS-B3WDP1-MD-1571837868539",
-  //       procurementMethodDetail: "Request for quotation 2",
-  //       classification: "15000000-8",
-  //       estematedValue: 1555247,
-  //       status: "evaluation",
-  //     },
-  //   ]);
-  //   setStatusVisible({
-  //     chart: false,
-  //     indicators: false,
-  //     purchases: true,
-  //   });
-  // };
+  //console.log(indicatorsData, statusVisible);
+  //console.log(statusVisible);
 
   const openChart = (e) => {
     e.preventDefault();
+    //console.log("click", statusVisible, setStatusVisible);
+    //console.log("statusVisible", statusVisible);
+
     setStatusVisible({
+      ...statusVisible,
       chart: true,
       indicators: false,
-      purchases: false,
     });
   };
   return (
@@ -105,6 +74,7 @@ const Indicators = () => {
         <tbody>
           <IndicatorsRow
             indicatorsData={indicatorsData}
+            statusVisible={statusVisible}
             setStatusVisible={setStatusVisible}
           />
         </tbody>

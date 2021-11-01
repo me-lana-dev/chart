@@ -8,7 +8,7 @@ import { CSSTransition } from "react-transition-group";
 
 const App = () => {
   const nodeRef = useRef(null);
-  let [statusVisible, setStatusVisible] = useState({
+  const [statusVisible, setStatusVisible] = useState({
     chart: true,
     indicators: false,
     purchases: false,
@@ -72,6 +72,8 @@ const App = () => {
     },
   ]);
 
+  console.log(setPurchaseData);
+
   return (
     <div className="App">
       <CSSTransition
@@ -82,7 +84,12 @@ const App = () => {
         unmountOnExit
       >
         <Context.Provider
-          value={[chartData, setIndicatorsData, setStatusVisible]}
+          value={[
+            chartData,
+            setIndicatorsData,
+            statusVisible,
+            setStatusVisible,
+          ]}
         >
           {statusVisible.chart && <BarChart />}
         </Context.Provider>
@@ -96,7 +103,7 @@ const App = () => {
         unmountOnExit
       >
         <Context.Provider
-          value={[indicatorsData, setPurchaseData, setStatusVisible]}
+          value={[indicatorsData, statusVisible, setStatusVisible]}
         >
           {statusVisible.indicators && <Indicators />}
         </Context.Provider>
@@ -110,7 +117,7 @@ const App = () => {
         unmountOnExit
       >
         <Context.Provider
-          value={[purchaseData, setIndicatorsData, setStatusVisible]}
+          value={[purchaseData, statusVisible, setStatusVisible]}
         >
           {statusVisible.purchases && <Purchases />}
         </Context.Provider>

@@ -3,9 +3,9 @@ import React from "react";
 const PurchasesRow = (props) => {
   const purchaseData = props.purchaseData;
 
-  return purchaseData.map((purchase) => {
+  return purchaseData.map((purchase, index) => {
     return (
-      <tr key={purchase.code}>
+      <tr key={index}>
         <td>
           <a href="/">{purchase.ocid}</a>
         </td>

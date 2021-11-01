@@ -8,7 +8,8 @@ import { Bar, Chart } from "react-chartjs-2";
 
 function BarChart() {
   // console.log(props);
-  const [chartData, setIndicatorsData, setStatusVisible] = useContext(Context);
+  const [chartData, setIndicatorsData, statusVisible, setStatusVisible] =
+    useContext(Context);
   // console.log(chartData);
   // console.log(statusVisible);
 
@@ -274,10 +275,13 @@ function BarChart() {
       },
     ]);
 
+    // console.log("click", statusVisible, setStatusVisible);
+    // console.log("statusVisible", statusVisible);
+
     setStatusVisible({
+      ...statusVisible,
       chart: false,
       indicators: true,
-      purchases: false,
     });
   };
 
