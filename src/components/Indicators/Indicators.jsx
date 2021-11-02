@@ -4,15 +4,16 @@ import styles from "./Indicators.module.css";
 import IndicatorsRow from "./IndicatorsRow";
 
 const Indicators = () => {
-  const [indicatorsData, statusVisible, setStatusVisible] = useContext(Context);
-
-  //console.log(indicatorsData, statusVisible);
-  //console.log(statusVisible);
+  const [
+    indicatorsData,
+    purchaseData,
+    setPurchaseData,
+    statusVisible,
+    setStatusVisible,
+  ] = useContext(Context);
 
   const openChart = (e) => {
     e.preventDefault();
-    //console.log("click", statusVisible, setStatusVisible);
-    //console.log("statusVisible", statusVisible);
 
     setStatusVisible({
       ...statusVisible,
@@ -24,18 +25,14 @@ const Indicators = () => {
     <div className={styles.indicators}>
       <h2 className={styles.indicators__h2}>
         <span>Risk indicators appearing during</span>
-        <a
-          href="/chart"
-          onClick={openChart}
-          className={styles.indicators__link}
-        >
+        <a href="/" onClick={openChart} className={styles.indicators__link}>
           publication stage
         </a>
       </h2>
 
       <div className={styles.breadcrumbs}>
         <div className={styles.breadcrumbs__link}>
-          <a href="/chart" onClick={openChart}>
+          <a href="/" onClick={openChart}>
             Dynamics
           </a>
           <svg
@@ -74,6 +71,8 @@ const Indicators = () => {
         <tbody>
           <IndicatorsRow
             indicatorsData={indicatorsData}
+            purchaseData={purchaseData}
+            setPurchaseData={setPurchaseData}
             statusVisible={statusVisible}
             setStatusVisible={setStatusVisible}
           />

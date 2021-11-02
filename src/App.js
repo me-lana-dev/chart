@@ -27,49 +27,9 @@ const App = () => {
     { stage: "Contracting", value: 3, average: 6 },
   ];
 
-  const [indicatorsData, setIndicatorsData] = useState([
-    {
-      code: "RI-PS-001",
-      description:
-        "Short or inadequate notice to bidders to submit expressions of interest or bids",
-      cases: 2,
-    },
-    {
-      code: "RI-PS-003",
-      description: "Splitting purchases to avoid procurement thresholds",
-      cases: 1,
-    },
-    {
-      code: "RI-PS-005",
-      description:
-        "Direct awards in contravention to the provisions of the procurement plan",
-      cases: 7,
-    },
-  ]);
+  const [indicatorsData, setIndicatorsData] = useState([]);
 
-  const [purchaseData, setPurchaseData] = useState([
-    {
-      ocid: "OCDS-B3WDP1-MD-1571837868539",
-      procurementMethodDetail: "Framework execution",
-      classification: "15000000-8",
-      estematedValue: 71555247,
-      status: "active",
-    },
-    {
-      ocid: "OCDS-B3WDP1-MD-1571837868540",
-      procurementMethodDetail: "Restricted tender",
-      classification: "15000000-9",
-      estematedValue: 1555247,
-      status: "active",
-    },
-    {
-      ocid: "OCDS-B3WDP1-MD-1571837868539",
-      procurementMethodDetail: "Request for quotation",
-      classification: "15000000-8",
-      estematedValue: 1555247,
-      status: "evaluation",
-    },
-  ]);
+  const [purchaseData, setPurchaseData] = useState([]);
 
   return (
     <div className="App">
@@ -100,7 +60,13 @@ const App = () => {
         unmountOnExit
       >
         <Context.Provider
-          value={[indicatorsData, statusVisible, setStatusVisible]}
+          value={[
+            indicatorsData,
+            purchaseData,
+            setPurchaseData,
+            statusVisible,
+            setStatusVisible,
+          ]}
         >
           <div ref={nodeRefIndicators}>
             {statusVisible.indicators && <Indicators />}

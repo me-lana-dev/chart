@@ -244,7 +244,7 @@ const BarChart = () => {
 
     setIndicatorsData([
       {
-        code: "RI-PS-002",
+        code: "RI-PS-001",
         description:
           "Short or inadequate notice to bidders to submit expressions of interest or bids",
         cases: 2,
