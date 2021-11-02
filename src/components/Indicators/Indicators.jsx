@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
 import styles from "./Indicators.module.css";
+import IndicatorsSelect from "./IndicatorsSelect";
 import IndicatorsRow from "./IndicatorsRow";
 
 const Indicators = () => {
@@ -10,7 +11,11 @@ const Indicators = () => {
     setPurchaseData,
     statusVisible,
     setStatusVisible,
+    labelsIndicators,
+    setLabelIndicators,
   ] = useContext(Context);
+
+  //console.log(labelsIndicators);
 
   const openChart = (e) => {
     e.preventDefault();
@@ -25,9 +30,12 @@ const Indicators = () => {
     <div className={styles.indicators}>
       <h2 className={styles.indicators__h2}>
         <span>Risk indicators appearing during</span>
-        <a href="/" onClick={openChart} className={styles.indicators__link}>
-          publication stage
-        </a>
+        <IndicatorsSelect
+          statusVisible={statusVisible}
+          setStatusVisible={setStatusVisible}
+          labelsIndicators={labelsIndicators}
+          setLabelIndicators={setLabelIndicators}
+        />
       </h2>
 
       <div className={styles.breadcrumbs}>

@@ -27,9 +27,16 @@ const App = () => {
     { stage: "Contracting", value: 3, average: 6 },
   ];
 
-  const [indicatorsData, setIndicatorsData] = useState([]);
+  const [indicatorsData, setIndicatorsData] = useState(null);
 
-  const [purchaseData, setPurchaseData] = useState([]);
+  const [purchaseData, setPurchaseData] = useState(null);
+
+  const [labelsIndicators, setLabelIndicators] = useState({
+    labels: [],
+    labelActive: "",
+  });
+
+  //const [labelActive, setLabelActive] = useState(null);
 
   return (
     <div className="App">
@@ -46,6 +53,8 @@ const App = () => {
             setIndicatorsData,
             statusVisible,
             setStatusVisible,
+            labelsIndicators,
+            setLabelIndicators,
           ]}
         >
           <div ref={nodeRefChart}>{statusVisible.chart && <BarChart />}</div>
@@ -66,6 +75,8 @@ const App = () => {
             setPurchaseData,
             statusVisible,
             setStatusVisible,
+            labelsIndicators,
+            setLabelIndicators,
           ]}
         >
           <div ref={nodeRefIndicators}>

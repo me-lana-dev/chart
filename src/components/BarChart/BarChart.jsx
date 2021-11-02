@@ -5,8 +5,14 @@ import { Bar, Chart } from "react-chartjs-2";
 
 const BarChart = () => {
   // console.log(props);
-  const [chartData, setIndicatorsData, statusVisible, setStatusVisible] =
-    useContext(Context);
+  const [
+    chartData,
+    setIndicatorsData,
+    statusVisible,
+    setStatusVisible,
+    labelsIndicators,
+    setLabelIndicators,
+  ] = useContext(Context);
 
   // Get Parameters from chartData
   const getParametrsArray = (params, param) => {
@@ -236,11 +242,19 @@ const BarChart = () => {
     if (!elements.length) return;
 
     const { index } = elements[0];
+    //console.log(index);
 
     const label = ref.current.config._config.data.labels[index];
     const blueLine = ref.current.config._config.data.datasets[0].data[index];
     const purpleLine = ref.current.config._config.data.datasets[1].data[index];
     console.log(label, blueLine, purpleLine);
+
+    //console.log(labelsIndicators);
+
+    setLabelIndicators({
+      labels,
+      labelActive: index,
+    });
 
     setIndicatorsData([
       {
