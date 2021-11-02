@@ -4,11 +4,12 @@ import styles from "./Purchases.module.css";
 import PurchasesRow from "./PurchasesRow";
 
 const Purchases = () => {
-  const [purchaseData, statusVisible, setStatusVisible] = useContext(Context);
+  const [purchaseData, setPurchaseData, statusVisible, setStatusVisible] =
+    useContext(Context);
 
   //const [purchaseData, statusVisible, setStatusVisible] = useContext(Context);
-  //console.log(purchaseData, statusVisible, statusVisible);
-
+  //console.log(purchaseData, setPurchaseData, statusVisible, statusVisible);
+  console.log(setPurchaseData);
   const openIndicators = (e) => {
     e.preventDefault();
     // setIndicatorsData([

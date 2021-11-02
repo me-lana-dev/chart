@@ -2,21 +2,11 @@ import React, { useContext, useRef } from "react";
 import { Context } from "../../context/Context";
 import styles from "./BarChart.module.css";
 import { Bar, Chart } from "react-chartjs-2";
-// import { useState } from "react";
-// import Indicators from "../../Indicators/Indicators";
-// import SplitPurchases from "../../SplitPurchases/SplitPurchases";
 
-function BarChart() {
+const BarChart = () => {
   // console.log(props);
   const [chartData, setIndicatorsData, statusVisible, setStatusVisible] =
     useContext(Context);
-  // console.log(chartData);
-  // console.log(statusVisible);
-
-  //const { chartData, setIndicatorsData } = props;
-  //const [setIndicatorsData] = useContext(Context);
-  //const [statusVisible, setStatusVisible] = useContext(Context);
-  //console.log(statusVisible);
 
   // Get Parameters from chartData
   const getParametrsArray = (params, param) => {
@@ -31,8 +21,8 @@ function BarChart() {
   const dataLinesBlue = getParametrsArray(chartData, "value");
   const dataLinesPurple = getParametrsArray(chartData, "average");
 
-  // Plugins for Cart
-  /* columns */
+  // Plugins for Chart
+  /* columns background */
   const chartAreaCols = {
     id: "chartAreaCols",
     beforeDraw(chart, args, options) {
@@ -244,16 +234,13 @@ function BarChart() {
 
   const getElementsAtEvent = (elements) => {
     if (!elements.length) return;
-    // console.log("getElements", elements);
-    // console.log(ref);
+
     const { index } = elements[0];
 
     const label = ref.current.config._config.data.labels[index];
     const blueLine = ref.current.config._config.data.datasets[0].data[index];
     const purpleLine = ref.current.config._config.data.datasets[1].data[index];
     console.log(label, blueLine, purpleLine);
-
-    //statusVisible.chart = false;
 
     setIndicatorsData([
       {
@@ -274,9 +261,6 @@ function BarChart() {
         cases: 7,
       },
     ]);
-
-    // console.log("click", statusVisible, setStatusVisible);
-    // console.log("statusVisible", statusVisible);
 
     setStatusVisible({
       ...statusVisible,
@@ -299,6 +283,6 @@ function BarChart() {
       />
     </div>
   );
-}
+};
 
 export default BarChart;

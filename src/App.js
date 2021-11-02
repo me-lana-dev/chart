@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import { Context } from "./context/Context";
+import { CSSTransition } from "react-transition-group";
 import BarChart from "./components/BarChart/BarChart";
 import Indicators from "./components/Indicators/Indicators";
 import Purchases from "./components/Purchases/Purchases";
 import "./styles/App.css";
-import { CSSTransition } from "react-transition-group";
 
 const App = () => {
-  // const nodeRef = useRef(null);
+  const nodeRefChart = React.useRef();
+  const nodeRefIndicators = React.useRef();
+  const nodeRefPurhcases = React.useRef();
+
   const [statusVisible, setStatusVisible] = useState({
     chart: true,
     indicators: false,
     purchases: false,
   });
-
-  //console.log(statusVisible);
-
-  //console.log(statusVisible.chart);
 
   const chartData = [
     { stage: "Announcement", value: 3, average: 2 },
@@ -28,7 +27,7 @@ const App = () => {
     { stage: "Contracting", value: 3, average: 6 },
   ];
 
-  let [indicatorsData, setIndicatorsData] = useState([
+  const [indicatorsData, setIndicatorsData] = useState([
     {
       code: "RI-PS-001",
       description:
@@ -48,7 +47,7 @@ const App = () => {
     },
   ]);
 
-  let [purchaseData, setPurchaseData] = useState([
+  const [purchaseData, setPurchaseData] = useState([
     {
       ocid: "OCDS-B3WDP1-MD-1571837868539",
       procurementMethodDetail: "Framework execution",
@@ -72,15 +71,13 @@ const App = () => {
     },
   ]);
 
-  console.log(setPurchaseData);
-
   return (
     <div className="App">
       <CSSTransition
         in={statusVisible.chart}
         timeout={1000}
         classNames="app__block"
-        // nodeRef={nodeRef}
+        nodeRef={nodeRefChart}
         unmountOnExit
       >
         <Context.Provider
@@ -91,7 +88,7 @@ const App = () => {
             setStatusVisible,
           ]}
         >
-          {statusVisible.chart && <BarChart />}
+          <div ref={nodeRefChart}>{statusVisible.chart && <BarChart />}</div>
         </Context.Provider>
       </CSSTransition>
 
@@ -99,13 +96,15 @@ const App = () => {
         in={statusVisible.indicators}
         timeout={1000}
         classNames="app__block"
-        // nodeRef={nodeRef}
+        nodeRef={nodeRefIndicators}
         unmountOnExit
       >
         <Context.Provider
           value={[indicatorsData, statusVisible, setStatusVisible]}
         >
-          {statusVisible.indicators && <Indicators />}
+          <div ref={nodeRefIndicators}>
+            {statusVisible.indicators && <Indicators />}
+          </div>
         </Context.Provider>
       </CSSTransition>
 
@@ -113,13 +112,20 @@ const App = () => {
         in={statusVisible.purchases}
         timeout={1000}
         classNames="app__block"
-        // nodeRef={nodeRef}
+        nodeRef={nodeRefPurhcases}
         unmountOnExit
       >
         <Context.Provider
-          value={[purchaseData, statusVisible, setStatusVisible]}
+          value={[
+            purchaseData,
+            setPurchaseData,
+            statusVisible,
+            setStatusVisible,
+          ]}
         >
-          {statusVisible.purchases && <Purchases />}
+          <div ref={nodeRefPurhcases}>
+            {statusVisible.purchases && <Purchases />}
+          </div>
         </Context.Provider>
       </CSSTransition>
     </div>
