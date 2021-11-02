@@ -7,6 +7,7 @@ import IndicatorsRow from "./IndicatorsRow";
 const Indicators = () => {
   const [
     indicatorsData,
+    setIndicatorsData,
     purchaseData,
     setPurchaseData,
     statusVisible,
@@ -31,8 +32,7 @@ const Indicators = () => {
       <h2 className={styles.indicators__h2}>
         <span>Risk indicators appearing during</span>
         <IndicatorsSelect
-          statusVisible={statusVisible}
-          setStatusVisible={setStatusVisible}
+          setIndicatorsData={setIndicatorsData}
           labelsIndicators={labelsIndicators}
           setLabelIndicators={setLabelIndicators}
         />

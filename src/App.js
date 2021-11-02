@@ -71,6 +71,7 @@ const App = () => {
         <Context.Provider
           value={[
             indicatorsData,
+            setIndicatorsData,
             purchaseData,
             setPurchaseData,
             statusVisible,
