@@ -14,11 +14,11 @@ const App = () => {
     purchases: false,
   });
 
-  console.log(statusVisible);
+  //console.log(statusVisible);
 
   //console.log(statusVisible.chart);
 
-  let chartData = [
+  const chartData = [
     { stage: "Announcement", value: 3, average: 2 },
     { stage: "Clarification", value: 3, average: 4 },
     { stage: "Qualification", value: 3, average: 5 },
