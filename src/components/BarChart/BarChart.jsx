@@ -249,7 +249,7 @@ const BarChart = () => {
     const purpleLine = ref.current.config._config.data.datasets[1].data[index];
     console.log(label, blueLine, purpleLine);
 
-    //console.log(labelsIndicators);
+    console.log(labelsIndicators);
 
     setLabelIndicators({
       labels,
