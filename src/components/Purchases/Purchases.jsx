@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/Context";
-import styles from "./Purchases.module.css";
 import PurchasesRow from "./PurchasesRow";
+import PurchaseSelect from "./PurchaseSelect";
+import styles from "./Purchases.module.css";
 
 const Purchases = () => {
   const [purchaseData, setPurchaseData, statusVisible, setStatusVisible] =
@@ -22,13 +23,7 @@ const Purchases = () => {
     <div className={styles.splitPurchases}>
       <h2 className={styles.splitPurchases__h2}>
         <span>Splitting purchases to avoid procurement thresholds</span>
-        <a
-          href="/"
-          onClick={openIndicators}
-          className={styles.splitPurchases__link}
-        >
-          RI-PS-04
-        </a>
+        <PurchaseSelect />
       </h2>
       <div className={styles.breadcrumbs}>
         <div className={styles.breadcrumbs__link}>
