@@ -250,6 +250,7 @@ const BarChart = () => {
     console.log(label, blueLine, purpleLine);
 
     console.log(labelsIndicators);
+    console.log(1);
 
     setLabelIndicators({
       labels,
