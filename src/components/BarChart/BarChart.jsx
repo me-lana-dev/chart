@@ -3,10 +3,11 @@ import { Context } from "../../context/Context";
 import styles from "./BarChart.module.css";
 import { Bar, Chart } from "react-chartjs-2";
 
-const BarChart = () => {
-  // console.log(props);
+const BarChart = (props) => {
+  //console.log(props);
+  const { chartdata } = props;
+  //console.log(chartdata);
   const [
-    chartData,
     setIndicatorsData,
     statusVisible,
     setStatusVisible,
@@ -23,9 +24,9 @@ const BarChart = () => {
     return array;
   };
 
-  const labels = getParametrsArray(chartData, "stage");
-  const dataLinesBlue = getParametrsArray(chartData, "value");
-  const dataLinesPurple = getParametrsArray(chartData, "average");
+  const labels = getParametrsArray(chartdata, "stage");
+  const dataLinesBlue = getParametrsArray(chartdata, "value");
+  const dataLinesPurple = getParametrsArray(chartdata, "average");
 
   // Plugins for Chart
   /* columns background */

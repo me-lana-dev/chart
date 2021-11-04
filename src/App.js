@@ -49,7 +49,6 @@ const App = () => {
       >
         <Context.Provider
           value={[
-            chartData,
             setIndicatorsData,
             statusVisible,
             setStatusVisible,
@@ -57,7 +56,9 @@ const App = () => {
             setLabelIndicators,
           ]}
         >
-          <div ref={nodeRefChart}>{statusVisible.chart && <BarChart />}</div>
+          <div ref={nodeRefChart}>
+            {statusVisible.chart && <BarChart chartdata={chartData} />}
+          </div>
         </Context.Provider>
       </CSSTransition>
 
