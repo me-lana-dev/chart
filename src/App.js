@@ -29,6 +29,8 @@ const App = () => {
 
   const [indicatorsData, setIndicatorsData] = useState(null);
 
+  const [codesIndicators, setCodeIndicators] = useState(null);
+
   const [purchaseData, setPurchaseData] = useState(null);
 
   const [labelsIndicators, setLabelIndicators] = useState({
@@ -100,6 +102,8 @@ const App = () => {
             setPurchaseData,
             statusVisible,
             setStatusVisible,
+            codesIndicators,
+            setCodeIndicators,
           ]}
         >
           <div ref={nodeRefPurhcases}>

@@ -5,8 +5,14 @@ import PurchaseSelect from "./PurchaseSelect";
 import styles from "./Purchases.module.css";
 
 const Purchases = () => {
-  const [purchaseData, setPurchaseData, statusVisible, setStatusVisible] =
-    useContext(Context);
+  const [
+    purchaseData,
+    setPurchaseData,
+    statusVisible,
+    setStatusVisible,
+    codesIndicators,
+    setCodeIndicators,
+  ] = useContext(Context);
 
   console.log(setPurchaseData);
   const openIndicators = (e) => {
@@ -23,7 +29,10 @@ const Purchases = () => {
     <div className={styles.splitPurchases}>
       <h2 className={styles.splitPurchases__h2}>
         <span>Splitting purchases to avoid procurement thresholds</span>
-        <PurchaseSelect />
+        <PurchaseSelect
+          codesIndicators={codesIndicators}
+          setCodeIndicators={setCodeIndicators}
+        />
       </h2>
       <div className={styles.breadcrumbs}>
         <div className={styles.breadcrumbs__link}>
