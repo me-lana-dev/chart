@@ -3,9 +3,19 @@ import React from "react";
 const IndicatorsRow = (props) => {
   const indicatorsData = props.indicatorsData;
 
-  const openPurchase = (e, code) => {
+  //console.log(props);
+
+  const openPurchase = (e, index) => {
     e.preventDefault();
-    console.log(code);
+    console.log(props.codes, index);
+    console.log(props.codesIndicators);
+    props.setCodeIndicators({
+      ...props.codesIndicators,
+      codes: props.codes,
+      codeActive: index,
+    });
+    console.log(props.codesIndicators);
+
     props.setPurchaseData([
       {
         ocid: "OCDS-B3WDP1-MD-1571837868539",
@@ -29,6 +39,7 @@ const IndicatorsRow = (props) => {
         status: "evaluation",
       },
     ]);
+
     props.setStatusVisible({
       ...props.setStatusVisible,
       indicators: false,
@@ -36,13 +47,14 @@ const IndicatorsRow = (props) => {
     });
   };
 
-  return indicatorsData.map((indicator) => {
+  return indicatorsData.map((indicator, index) => {
+    console.log(index);
     return (
       <tr key={indicator.code}>
         <td>{indicator.code}</td>
         <td>{indicator.description}</td>
         <td>
-          <a href="/" onClick={(e) => openPurchase(e, indicator.code)}>
+          <a href="/" onClick={(e) => openPurchase(e, index)}>
             {indicator.cases}
           </a>
         </td>

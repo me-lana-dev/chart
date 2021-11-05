@@ -14,7 +14,7 @@ const Purchases = () => {
     setCodeIndicators,
   ] = useContext(Context);
 
-  console.log(setPurchaseData);
+  // console.log(setPurchaseData);
   const openIndicators = (e) => {
     e.preventDefault();
 
@@ -30,6 +30,8 @@ const Purchases = () => {
       <h2 className={styles.splitPurchases__h2}>
         <span>Splitting purchases to avoid procurement thresholds</span>
         <PurchaseSelect
+          purchaseData={purchaseData}
+          setPurchaseData={setPurchaseData}
           codesIndicators={codesIndicators}
           setCodeIndicators={setCodeIndicators}
         />

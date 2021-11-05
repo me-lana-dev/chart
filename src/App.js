@@ -29,13 +29,15 @@ const App = () => {
 
   const [indicatorsData, setIndicatorsData] = useState(null);
 
-  const [codesIndicators, setCodeIndicators] = useState(null);
-
   const [purchaseData, setPurchaseData] = useState(null);
 
   const [labelsIndicators, setLabelIndicators] = useState({
     labels: [],
     labelActive: "",
+  });
+  const [codesIndicators, setCodeIndicators] = useState({
+    codes: [],
+    codeActive: "",
   });
 
   //const [labelActive, setLabelActive] = useState(null);
@@ -81,6 +83,8 @@ const App = () => {
             setStatusVisible,
             labelsIndicators,
             setLabelIndicators,
+            codesIndicators,
+            setCodeIndicators,
           ]}
         >
           <div ref={nodeRefIndicators}>

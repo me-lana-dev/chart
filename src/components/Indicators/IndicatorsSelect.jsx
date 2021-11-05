@@ -2,17 +2,17 @@ import React from "react";
 import styles from "./Indicators.module.css";
 
 const IndicatorsSelect = (props) => {
-  console.log(props);
+  //console.log(props);
 
   const { labelActive, labels } = props.labelsIndicators;
-  console.log(labelActive, labels);
+  //console.log(labelActive, labels);
 
   const openSelect = (e) => {
     e.preventDefault();
   };
 
   const loadLabel = (e, index) => {
-    console.log(e, index);
+    //console.log(e, index);
     props.setIndicatorsData([
       {
         code: "RI-PS-004",

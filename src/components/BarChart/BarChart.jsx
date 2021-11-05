@@ -27,6 +27,8 @@ const BarChart = (props) => {
   const labels = getParametrsArray(chartdata, "stage");
   const dataLinesBlue = getParametrsArray(chartdata, "value");
   const dataLinesPurple = getParametrsArray(chartdata, "average");
+  //console.log(labels, dataLinesBlue, dataLinesPurple);
+  console.log(labelsIndicators);
 
   // Plugins for Chart
   /* columns background */
@@ -250,8 +252,8 @@ const BarChart = (props) => {
     const purpleLine = ref.current.config._config.data.datasets[1].data[index];
     console.log(label, blueLine, purpleLine);
 
-    console.log(labelsIndicators);
-    console.log(1);
+    // console.log(labelsIndicators);
+    // console.log(1);
 
     setLabelIndicators({
       labels,
