@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Purchases.module.css";
 
 const PurchaseSelect = (props) => {
   const { codeActive, codes } = props.codesIndicators;
-  console.log(props);
+
+  // const [codeP, setCode] = useState(codes[codeActive]);
+  // console.log("codeP", codeP);
+
+  //let filterCodes = codes.filter((code, i) => code !== codeP);
+  //console.log("filterCodes", filterCodes);
+
+  //console.log(props);
   const openIndicators = (e) => {
     e.preventDefault();
   };
 
   const loadData = (e, index) => {
-    //console.log(e, index);
+    console.log(index);
+    e.preventDefault();
     props.setPurchaseData([
       {
         ocid: "OCDS-B3WDP1-MD-1571837868539",
@@ -33,6 +41,23 @@ const PurchaseSelect = (props) => {
         status: "evaluation",
       },
     ]);
+
+    //console.log(index, code);
+
+    //const indexI = codes.filter((item, code) => console.log(item, code));
+    //console.log("indexI", indexI);
+
+    // setCode(code);
+    //const allCodes = codes.filter((code, i) => console.log(code, i, index));
+    //let filterCodes = codes.filter((codeItem) => codeItem !== code);
+
+    // let filterCodes = codes.filter((code, i) => code !== codeP);
+    // console.log("filterCodes", filterCodes);
+
+    props.setCodeIndicators({
+      ...props.codesIndicators,
+      codeActive: index,
+    });
   };
 
   return (

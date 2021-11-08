@@ -8,13 +8,13 @@ const IndicatorsRow = (props) => {
   const openPurchase = (e, index) => {
     e.preventDefault();
     console.log(props.indicatorsCodes, index);
-    console.log(props.codesIndicators);
+    //console.log(props.codesIndicators);
     props.setCodeIndicators({
       ...props.codesIndicators,
       codes: props.indicatorsCodes,
       codeActive: index,
     });
-    console.log(props.codesIndicators);
+    //console.log(props.codesIndicators);
 
     props.setPurchaseData([
       {

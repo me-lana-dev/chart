@@ -13,6 +13,7 @@ const IndicatorsSelect = (props) => {
 
   const loadLabel = (e, index) => {
     //console.log(e, index);
+    e.preventDefault();
     props.setIndicatorsData([
       {
         code: "RI-PS-004",
@@ -26,6 +27,11 @@ const IndicatorsSelect = (props) => {
         cases: 1,
       },
     ]);
+
+    props.setLabelIndicators({
+      ...props.labelsIndicators,
+      labelActive: index,
+    });
   };
 
   return (
