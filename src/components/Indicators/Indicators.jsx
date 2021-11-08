@@ -30,8 +30,8 @@ const Indicators = () => {
     return array;
   };
 
-  const codes = getParametrsArray(indicatorsData, "code");
-  //console.log(codes);
+  const indicatorsCodes = getParametrsArray(indicatorsData, "code");
+  //console.log(indicatorsCodes);
 
   const openChart = (e) => {
     e.preventDefault();
@@ -94,7 +94,7 @@ const Indicators = () => {
         <tbody>
           <IndicatorsRow
             indicatorsData={indicatorsData}
-            codes={codes}
+            indicatorsCodes={indicatorsCodes}
             purchaseData={purchaseData}
             setPurchaseData={setPurchaseData}
             statusVisible={statusVisible}

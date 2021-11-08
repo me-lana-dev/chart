@@ -7,11 +7,11 @@ const IndicatorsRow = (props) => {
 
   const openPurchase = (e, index) => {
     e.preventDefault();
-    console.log(props.codes, index);
+    console.log(props.indicatorsCodes, index);
     console.log(props.codesIndicators);
     props.setCodeIndicators({
       ...props.codesIndicators,
-      codes: props.codes,
+      codes: props.indicatorsCodes,
       codeActive: index,
     });
     console.log(props.codesIndicators);
