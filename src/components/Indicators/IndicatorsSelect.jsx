@@ -13,7 +13,7 @@ const IndicatorsSelect = (props) => {
     e.preventDefault();
   };
 
-  const loadLabel = (e, index) => {
+  const loadLabel = (e, index, id) => {
     console.log(index);
     e.preventDefault();
     props.setIndicatorsData([
@@ -32,7 +32,7 @@ const IndicatorsSelect = (props) => {
 
     props.setLabelIndicators({
       ...props.labelsIndicators,
-      labelActive: index,
+      labelActive: id,
     });
   };
 
@@ -45,9 +45,9 @@ const IndicatorsSelect = (props) => {
         {filterLabels.map((label, index) => {
           return (
             <li
-              key={index}
+              key={label["id"]}
               onClick={(e) => {
-                loadLabel(e, index);
+                loadLabel(e, index, label["id"]);
               }}
             >
               {label["label"]}
