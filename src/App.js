@@ -32,11 +32,11 @@ const App = () => {
   const [purchaseData, setPurchaseData] = useState(null);
 
   const [labelsIndicators, setLabelIndicators] = useState({
-    labels: [],
+    labels: [{ id: "", label: "" }],
     labelActive: "",
   });
   const [codesIndicators, setCodeIndicators] = useState({
-    codes: [],
+    codes: [{ id: "", code: "" }],
     codeActive: "",
   });
 

@@ -21,18 +21,6 @@ const Indicators = () => {
   //console.log(labelsIndicators);
   //console.log(codesIndicators, setCodeIndicators);
 
-  // Get Parameters from chartData
-  const getParametrsArray = (params, param) => {
-    const array = [];
-    params.map((x) => {
-      return array.push(x[param]);
-    });
-    return array;
-  };
-
-  const indicatorsCodes = getParametrsArray(indicatorsData, "code");
-  //console.log(indicatorsCodes);
-
   const openChart = (e) => {
     e.preventDefault();
 
@@ -94,13 +82,12 @@ const Indicators = () => {
         <tbody>
           <IndicatorsRow
             indicatorsData={indicatorsData}
-            indicatorsCodes={indicatorsCodes}
+            codesIndicators={codesIndicators}
+            setCodeIndicators={setCodeIndicators}
             purchaseData={purchaseData}
             setPurchaseData={setPurchaseData}
             statusVisible={statusVisible}
             setStatusVisible={setStatusVisible}
-            codesIndicators={codesIndicators}
-            setCodeIndicators={setCodeIndicators}
           />
         </tbody>
       </table>

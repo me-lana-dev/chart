@@ -24,6 +24,17 @@ const BarChart = (props) => {
     return array;
   };
 
+  const getParametrsSelect = (params) => {
+    const labels = [];
+    params.map((x, index) => {
+      return labels.push({
+        id: index,
+        label: x,
+      });
+    });
+    return labels;
+  };
+
   const labels = getParametrsArray(chartdata, "stage");
   const dataLinesBlue = getParametrsArray(chartdata, "value");
   const dataLinesPurple = getParametrsArray(chartdata, "average");
@@ -255,8 +266,10 @@ const BarChart = (props) => {
     // console.log(labelsIndicators);
     // console.log(1);
 
+    const labelsSelect = getParametrsSelect(labels);
+
     setLabelIndicators({
-      labels,
+      labels: labelsSelect,
       labelActive: index,
     });
 

@@ -2,17 +2,19 @@ import React from "react";
 import styles from "./Indicators.module.css";
 
 const IndicatorsSelect = (props) => {
-  //console.log(props);
-
   const { labelActive, labels } = props.labelsIndicators;
-  //console.log(labelActive, labels);
+
+  const filterLabel = labels.filter((label) => label["id"] === labelActive);
+  const filterLabels = labels.filter((label) => label["id"] !== labelActive);
+  //console.log("filterLabel", filterLabel);
+  //console.log("filterLabels", filterLabels);
 
   const openSelect = (e) => {
     e.preventDefault();
   };
 
   const loadLabel = (e, index) => {
-    //console.log(e, index);
+    console.log(index);
     e.preventDefault();
     props.setIndicatorsData([
       {
@@ -37,10 +39,10 @@ const IndicatorsSelect = (props) => {
   return (
     <div className="dropdown">
       <a href="/" onClick={openSelect} className={styles.indicators__link}>
-        {labels[labelActive]} stage
+        {filterLabel[0]["label"]} stage
       </a>
       <ul>
-        {labels.map((label, index) => {
+        {filterLabels.map((label, index) => {
           return (
             <li
               key={index}
@@ -48,7 +50,7 @@ const IndicatorsSelect = (props) => {
                 loadLabel(e, index);
               }}
             >
-              {label}
+              {label["label"]}
             </li>
           );
         })}

@@ -14,6 +14,8 @@ const Purchases = () => {
     setCodeIndicators,
   ] = useContext(Context);
 
+  //console.log(codesIndicators);
+
   // console.log(setPurchaseData);
   const openIndicators = (e) => {
     e.preventDefault();

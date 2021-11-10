@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Purchases.module.css";
 
 const PurchaseSelect = (props) => {
   const { codeActive, codes } = props.codesIndicators;
 
-  // const [codeP, setCode] = useState(codes[codeActive]);
-  // console.log("codeP", codeP);
+  const filterCode = codes.filter((code) => code["id"] === codeActive);
+  const filterCodes = codes.filter((code) => code["id"] !== codeActive);
+  console.log("filterCode 1", filterCode[0]["id"], filterCode[0]["code"]);
+  console.log(filterCodes);
 
-  //let filterCodes = codes.filter((code, i) => code !== codeP);
-  //console.log("filterCodes", filterCodes);
-
-  //console.log(props);
   const openIndicators = (e) => {
     e.preventDefault();
   };
 
-  const loadData = (e, index) => {
-    console.log(index);
+  const loadData = (e, index, id) => {
+    console.log("===================");
+    console.log("indexPurchase", index);
+    console.log(
+      "filterCode 2",
+      "id = ",
+      filterCode[0]["id"],
+      filterCode[0]["code"]
+    );
+    console.log(filterCodes);
+    console.log("===================");
     e.preventDefault();
     props.setPurchaseData([
       {
@@ -42,21 +49,9 @@ const PurchaseSelect = (props) => {
       },
     ]);
 
-    //console.log(index, code);
-
-    //const indexI = codes.filter((item, code) => console.log(item, code));
-    //console.log("indexI", indexI);
-
-    // setCode(code);
-    //const allCodes = codes.filter((code, i) => console.log(code, i, index));
-    //let filterCodes = codes.filter((codeItem) => codeItem !== code);
-
-    // let filterCodes = codes.filter((code, i) => code !== codeP);
-    // console.log("filterCodes", filterCodes);
-
     props.setCodeIndicators({
       ...props.codesIndicators,
-      codeActive: index,
+      codeActive: id,
     });
   };
 
@@ -67,18 +62,18 @@ const PurchaseSelect = (props) => {
         onClick={openIndicators}
         className={styles.splitPurchases__link}
       >
-        {codes[codeActive]}
+        {filterCode[0]["code"]}
       </a>
       <ul>
-        {codes.map((code, index) => {
+        {filterCodes.map((code, index) => {
           return (
             <li
-              key={index}
+              key={code["id"]}
               onClick={(e) => {
-                loadData(e, index);
+                loadData(e, index, code["id"]);
               }}
             >
-              {code}
+              {code["code"]}
             </li>
           );
         })}

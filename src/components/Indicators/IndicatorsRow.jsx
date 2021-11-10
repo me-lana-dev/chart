@@ -3,17 +3,50 @@ import React from "react";
 const IndicatorsRow = (props) => {
   const indicatorsData = props.indicatorsData;
 
-  //console.log(props);
+  //console.log(props.codesIndicators);
+
+  // Get Parameters from chartData
+  const getParametrsArray = (params, param) => {
+    const array = [];
+    params.map((x) => {
+      return array.push(x[param]);
+    });
+    return array;
+  };
+
+  const indicatorsCodes = getParametrsArray(indicatorsData, "code");
+  //console.log(indicatorsCodes);
+
+  const getParametrsSelect = (params) => {
+    const labels = [];
+    params.map((x, index) => {
+      return labels.push({
+        id: index,
+        code: x,
+      });
+    });
+    return labels;
+  };
 
   const openPurchase = (e, index) => {
     e.preventDefault();
-    console.log(props.indicatorsCodes, index);
-    //console.log(props.codesIndicators);
+    //console.log(indicatorsCodes, index);
+
+    const codesSelect = getParametrsSelect(indicatorsCodes);
+    //console.log("codesSelect", codesSelect);
+
     props.setCodeIndicators({
-      ...props.codesIndicators,
-      codes: props.indicatorsCodes,
+      codes: codesSelect,
       codeActive: index,
     });
+    //console.log(props.codesIndicators);
+
+    //console.log(props.codesIndicators);
+    // props.setCodeIndicators({
+    //   ...props.codesIndicators,
+    //   codes: props.indicatorsCodes,
+    //   codeActive: index,
+    // });
     //console.log(props.codesIndicators);
 
     props.setPurchaseData([
@@ -48,7 +81,7 @@ const IndicatorsRow = (props) => {
   };
 
   return indicatorsData.map((indicator, index) => {
-    console.log(index);
+    // console.log(index);
     return (
       <tr key={indicator.code}>
         <td>{indicator.code}</td>
