@@ -14,7 +14,7 @@ const IndicatorsSelect = (props) => {
   };
 
   const loadLabel = (e, index, id) => {
-    console.log(index);
+    //console.log(index);
     e.preventDefault();
     props.setIndicatorsData([
       {

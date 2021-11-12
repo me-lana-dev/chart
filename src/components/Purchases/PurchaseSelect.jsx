@@ -6,24 +6,24 @@ const PurchaseSelect = (props) => {
 
   const filterCode = codes.filter((code) => code["id"] === codeActive);
   const filterCodes = codes.filter((code) => code["id"] !== codeActive);
-  console.log("filterCode 1", filterCode[0]["id"], filterCode[0]["code"]);
-  console.log(filterCodes);
+  //console.log("filterCode 1", filterCode[0]["id"], filterCode[0]["code"]);
+  //console.log(filterCodes);
 
   const openIndicators = (e) => {
     e.preventDefault();
   };
 
   const loadData = (e, index, id) => {
-    console.log("===================");
-    console.log("indexPurchase", index);
-    console.log(
-      "filterCode 2",
-      "id = ",
-      filterCode[0]["id"],
-      filterCode[0]["code"]
-    );
-    console.log(filterCodes);
-    console.log("===================");
+    // console.log("===================");
+    // console.log("indexPurchase", index);
+    // console.log(
+    //   "filterCode 2",
+    //   "id = ",
+    //   filterCode[0]["id"],
+    //   filterCode[0]["code"]
+    // );
+    // console.log(filterCodes);
+    // console.log("===================");
     e.preventDefault();
     props.setPurchaseData([
       {

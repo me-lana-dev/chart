@@ -39,7 +39,7 @@ const BarChart = (props) => {
   const dataLinesBlue = getParametrsArray(chartdata, "value");
   const dataLinesPurple = getParametrsArray(chartdata, "average");
   //console.log(labels, dataLinesBlue, dataLinesPurple);
-  console.log(labelsIndicators);
+  //console.log(labelsIndicators);
 
   // Plugins for Chart
   /* columns background */
@@ -269,6 +269,7 @@ const BarChart = (props) => {
     const labelsSelect = getParametrsSelect(labels);
 
     setLabelIndicators({
+      ...labelsIndicators,
       labels: labelsSelect,
       labelActive: index,
     });
