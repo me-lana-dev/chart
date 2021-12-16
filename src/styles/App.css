@@ -1,6 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
-  padding: 30px;
+  padding: 0;
+  margin: 0;
 }
 .app__block-enter {
   opacity: 0;

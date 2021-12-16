@@ -1,0 +1,30 @@
+.wrap {
+  display: block;
+  padding: 1px 0 1px;
+  background: url("../BarChartMonitoring/bg-chart.jpg") no-repeat center center;
+  background-size: cover;
+}
+.chart {
+  max-width: 873px;
+  margin: 100px auto 100px;
+}
+.chart__h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.chart__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 0;
+  padding-left: 10px;
+}
+
+#legend-container2 p {
+  color: #fff !important;
+}

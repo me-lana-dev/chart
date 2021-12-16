@@ -4,12 +4,17 @@ import { CSSTransition } from "react-transition-group";
 import BarChart from "./components/BarChart/BarChart";
 import Indicators from "./components/Indicators/Indicators";
 import Purchases from "./components/Purchases/Purchases";
+import BarChartVidget from "./components/BarChartVidget/BarChartVidget";
+import BarChartMonitoring from "./components/BarChartMonitoring/BarChartMonitoring";
 import "./styles/App.css";
 
 const App = () => {
   const nodeRefChart = React.useRef();
   const nodeRefIndicators = React.useRef();
   const nodeRefPurhcases = React.useRef();
+
+  const nodeRef2 = React.useRef();
+  const nodeRef3 = React.useRef();
 
   const [statusVisible, setStatusVisible] = useState({
     chart: true,
@@ -112,6 +117,48 @@ const App = () => {
         >
           <div ref={nodeRefPurhcases}>
             {statusVisible.purchases && <Purchases />}
+          </div>
+        </Context.Provider>
+      </CSSTransition>
+
+      <CSSTransition
+        in={statusVisible.chart}
+        timeout={1000}
+        classNames="app__block"
+        nodeRef={nodeRef2}
+        unmountOnExit
+      >
+        <Context.Provider
+          value={[
+            setIndicatorsData,
+            statusVisible,
+            setStatusVisible,
+            labelsIndicators,
+            setLabelIndicators,
+          ]}
+        >
+          <div ref={nodeRef2}>{statusVisible.chart && <BarChartVidget />}</div>
+        </Context.Provider>
+      </CSSTransition>
+
+      <CSSTransition
+        in={statusVisible.chart}
+        timeout={1000}
+        classNames="app__block"
+        nodeRef={nodeRef3}
+        unmountOnExit
+      >
+        <Context.Provider
+          value={[
+            setIndicatorsData,
+            statusVisible,
+            setStatusVisible,
+            labelsIndicators,
+            setLabelIndicators,
+          ]}
+        >
+          <div ref={nodeRef3}>
+            {statusVisible.chart && <BarChartMonitoring />}
           </div>
         </Context.Provider>
       </CSSTransition>

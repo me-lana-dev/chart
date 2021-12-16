@@ -4,7 +4,8 @@ import styles from "./BarChart.module.css";
 import { Bar, Chart } from "react-chartjs-2";
 
 const BarChart = (props) => {
-  //console.log(props);
+  const ref = useRef();
+  console.log(Chart);
   const { chartdata } = props;
   //console.log(chartdata);
   const [
@@ -82,8 +83,14 @@ const BarChart = (props) => {
 
   /* html legend */
   const getOrCreateLegendList = (chart, id) => {
+    //console.log(chart);
     const legendContainer = document.getElementById(id);
-    let listContainer = legendContainer.querySelector("ul");
+
+    let listContainer;
+
+    if (legendContainer) {
+      listContainer = legendContainer.querySelector("ul");
+    }
 
     if (!listContainer) {
       listContainer = document.createElement("ul");
@@ -92,7 +99,10 @@ const BarChart = (props) => {
       listContainer.style.margin = 0;
       listContainer.style.padding = 0;
 
-      legendContainer.appendChild(listContainer);
+      if (legendContainer) {
+        legendContainer.appendChild(listContainer);
+      }
+      //legendContainer.appendChild(listContainer);
     }
 
     return listContainer;
@@ -224,7 +234,7 @@ const BarChart = (props) => {
     },
   };
 
-  const data = (canvas) => {
+  const data = () => {
     return {
       labels: labels,
       options: { options },
@@ -249,8 +259,6 @@ const BarChart = (props) => {
       ],
     };
   };
-
-  const ref = useRef();
 
   const getElementsAtEvent = (elements) => {
     if (!elements.length) return;
@@ -300,6 +308,12 @@ const BarChart = (props) => {
       indicators: true,
     });
   };
+
+  // new Chart(ref, {
+  //   data: data,
+  //   options: options,
+  //   getElementsAtEvent: getElementsAtEvent,
+  // });
 
   return (
     <div className={styles.chart}>
